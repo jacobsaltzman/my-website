@@ -2,6 +2,8 @@
 
 export default function StarGrid() {
   const grid = [14, 30] as const;
+  const starOpacity = 0.2; // Opacity for stars
+
   const buildings = [
     { x: 40, y: 375, width: 30, height: 50, fill: "#070815" }, // Building 1
     { x: 90, y: 360, width: 40, height: 65, fill: "#070825" }, // Building 2
@@ -26,7 +28,7 @@ export default function StarGrid() {
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 935 425"
-      className="absolute -top-14 -z-10"
+      className="absolute -top-14 -z-10 opacity-90"
       id="star-grid"
     >
       <defs>
@@ -45,11 +47,12 @@ export default function StarGrid() {
       <g className="star-grid-group">
         {[...Array(grid[0])].map((_, i) => {
           return [...Array(grid[1])].map((_, j) => {
+            const randomOpacity = Math.random() * 0.8 + 0.2; // Random opacity between 0.2 and 1.0
             return (
               <path
                 key={i + j}
                 fill="currentColor"
-                opacity=".6" // Slightly increased opacity for better visibility
+                opacity={randomOpacity * starOpacity} // Combined opacity with starOpacity
                 className="star-grid-item"
                 d={`M${j * 32},${i * 32 + 10}a0.14,0.14,0,0,1,0.26,0l0.14,0.36a2.132,2.132,0,0,0,1.27,1.27l0.37,0.14a0.14,0.14,0,0,1,0,0.26l-0.37,0.14a2.132,2.132,0,0,0,-1.27,1.27l-0.14,0.37a0.14,0.14,0,0,1,-0.26,0l-0.14,-0.37a2.132,2.132,0,0,0,-1.27,-1.27l-0.36,-0.14a0.14,0.14,0,0,1,0,-0.26l0.37,-0.14a2.132,2.132,0,0,0,1.26,-1.27l0.14,-0.36z`}
               />
