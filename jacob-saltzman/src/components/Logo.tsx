@@ -2,8 +2,8 @@ import React from "react";
 
 const Logo = () => (
   <svg
-    width="200"
-    height="200"
+    width="75"
+    height="75"
     viewBox="0 0 200 200"
     xmlns="http://www.w3.org/2000/svg"
   >
