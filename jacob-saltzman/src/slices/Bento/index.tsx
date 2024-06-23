@@ -23,7 +23,7 @@ const Bento = ({ slice }: BentoProps): JSX.Element => {
         {slice.primary.bento.map((item) => {
           return (
             // Render the item
-            <div>
+            <div key={item.title}>
               <PrismicRichText field={item.title} />
               <PrismicRichText field={item.body} />
               <PrismicNextImage field={item.image} />
