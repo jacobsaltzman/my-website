@@ -1,4 +1,4 @@
-import { Content } from "@prismicio/client";
+import { Content, asText } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 
@@ -23,7 +23,7 @@ const Bento = ({ slice }: BentoProps): JSX.Element => {
         {slice.primary.bento.map((item) => {
           return (
             // Render the item
-            <div key={item.title}>
+            <div className="glass-container" key={asText(item.title)}>
               <PrismicRichText field={item.title} />
               <PrismicRichText field={item.body} />
               <PrismicNextImage field={item.image} />
