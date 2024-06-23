@@ -31,10 +31,12 @@ export default function StarGrid() {
     >
       <defs>
         <linearGradient id="neon-gradient" x1="0%" y1="100%" x2="0%" y2="0%">
-          <stop offset="0%" style={{ stopColor: "#6a0dad", stopOpacity: 1 }} /> {/* Darker Light Purple */}
-          <stop offset="25%" style={{ stopColor: "#4b0082", stopOpacity: 1 }} /> {/* Darker Dark Purple */}
-          <stop offset="50%" style={{ stopColor: "#00008b", stopOpacity: 1 }} /> {/* Darker Blue */}
-          <stop offset="100%" style={{ stopColor: "#00004b", stopOpacity: 1 }} /> {/* Very Dark Blue */}
+          <stop offset="0%" style={{ stopColor: "#9751eb", stopOpacity: 1 }} /> {/* Darker Light Purple */}
+          <stop offset="20%" style={{ stopColor: "#4b0082", stopOpacity: 1 }} /> {/* Darker Dark Purple */}
+          <stop offset="40%" style={{ stopColor: "#6018cc", stopOpacity: 1 }} /> {/* Darker Blue */}
+          <stop offset="60%" style={{ stopColor: "#00008b", stopOpacity: 1 }} /> {/* Darker Blue */}
+          <stop offset="80%" style={{ stopColor: "#00004b", stopOpacity: 1 }} /> {/* Darker Blue */}
+          <stop offset="100%" style={{ stopColor: "#070815", stopOpacity: 1 }} /> {/* Very Dark Blue */}
         </linearGradient>
       </defs>
       <rect width="100%" height="100%" fill="url(#neon-gradient)" mask="url(#mask-gradient)" />
