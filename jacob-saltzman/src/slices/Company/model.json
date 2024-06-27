@@ -1,0 +1,53 @@
+{
+  "id": "company",
+  "type": "SharedSlice",
+  "name": "Company",
+  "description": "Company",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading2"
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Body",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph"
+          }
+        },
+        "workzone": {
+          "type": "Group",
+          "config": {
+            "label": "WorkZone",
+            "repeat": true,
+            "fields": {
+              "work_experience": {
+                "type": "Link",
+                "config": {
+                  "label": "Work Experience",
+                  "select": "document"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

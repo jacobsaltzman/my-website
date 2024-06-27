@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type PageDocumentDataSlicesSlice =
+  | CompanySlice
   | ShowcaseSlice
   | BentoSlice
   | HeroSlice
@@ -181,7 +182,108 @@ export type SettingsDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = PageDocument | SettingsDocument;
+type WorkExperienceDocumentDataSlicesSlice = RichTextSlice;
+
+/**
+ * Content for Work Experience documents
+ */
+interface WorkExperienceDocumentData {
+  /**
+   * Company field in *Work Experience*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: work_experience.company
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  company: prismic.TitleField;
+
+  /**
+   * Description field in *Work Experience*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: work_experience.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Logo Image field in *Work Experience*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: work_experience.logo_image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  logo_image: prismic.ImageField<never>;
+
+  /**
+   * Slice Zone field in *Work Experience*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: work_experience.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<WorkExperienceDocumentDataSlicesSlice> /**
+   * Meta Title field in *Work Experience*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: work_experience.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Work Experience*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: work_experience.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Work Experience*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: work_experience.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Work Experience document from Prismic
+ *
+ * - **API ID**: `work_experience`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type WorkExperienceDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<WorkExperienceDocumentData>,
+    "work_experience",
+    Lang
+  >;
+
+export type AllDocumentTypes =
+  | PageDocument
+  | SettingsDocument
+  | WorkExperienceDocument;
 
 /**
  * Item in *Bento → Default → Primary → Bento*
@@ -290,6 +392,88 @@ type BentoSliceVariation = BentoSliceDefault;
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type BentoSlice = prismic.SharedSlice<"bento", BentoSliceVariation>;
+
+/**
+ * Item in *Company → Default → Primary → WorkZone*
+ */
+export interface CompanySliceDefaultPrimaryWorkzoneItem {
+  /**
+   * Work Experience field in *Company → Default → Primary → WorkZone*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: company.default.primary.workzone[].work_experience
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  work_experience: prismic.ContentRelationshipField;
+}
+
+/**
+ * Primary content in *Company → Default → Primary*
+ */
+export interface CompanySliceDefaultPrimary {
+  /**
+   * Heading field in *Company → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: company.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Body field in *Company → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: company.default.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * WorkZone field in *Company → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: company.default.primary.workzone[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  workzone: prismic.GroupField<
+    Simplify<CompanySliceDefaultPrimaryWorkzoneItem>
+  >;
+}
+
+/**
+ * Default variation for Company Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CompanySliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CompanySliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Company*
+ */
+type CompanySliceVariation = CompanySliceDefault;
+
+/**
+ * Company Shared Slice
+ *
+ * - **API ID**: `company`
+ * - **Description**: Company
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CompanySlice = prismic.SharedSlice<
+  "company",
+  CompanySliceVariation
+>;
 
 /**
  * Primary content in *Hero → Default → Primary*
@@ -627,12 +811,20 @@ declare module "@prismicio/client" {
       SettingsDocument,
       SettingsDocumentData,
       SettingsDocumentDataNavigationItem,
+      WorkExperienceDocument,
+      WorkExperienceDocumentData,
+      WorkExperienceDocumentDataSlicesSlice,
       AllDocumentTypes,
       BentoSlice,
       BentoSliceDefaultPrimaryBentoItem,
       BentoSliceDefaultPrimary,
       BentoSliceVariation,
       BentoSliceDefault,
+      CompanySlice,
+      CompanySliceDefaultPrimaryWorkzoneItem,
+      CompanySliceDefaultPrimary,
+      CompanySliceVariation,
+      CompanySliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
