@@ -12,7 +12,7 @@ export default function PlainLogo() {
 
     {/* middle- top */}
 
-    <line x1="100" y1="50" x2="100" y2="90" stroke="#61dafb" strokeWidth="3" />
+    <line x1="100" y1="50" x2="100" y2="90" stroke="#00ff9f" strokeWidth="3" />
 
     {/* middle- bottom */}
 
@@ -27,23 +27,23 @@ export default function PlainLogo() {
 
     {/* slant-middle-first */}
 
-    <line x1="80" y1="90" x2="100" y2="110" stroke="#000000" strokeWidth="3" />
+    <line x1="80" y1="90" x2="100" y2="110" stroke="#61dafb" strokeWidth="3" />
     {/* slant-middle-second */}
 
-    <line x1="100" y1="90" x2="120" y2="110" stroke="#000000" strokeWidth="4" />
-    {/* left-side */}
+    <line x1="100" y1="90" x2="120" y2="110" stroke="#61dafb" strokeWidth="4" />
+    {/* left-side   */}
 
-    <line x1="80" y1="50" x2="80" y2="130" stroke="#61dafb" strokeWidth="2" />
+    <line x1="80" y1="50" x2="80" y2="130" stroke="#00ff9f" strokeWidth="2" />
     {/* right-side */}
 
-    <line x1="120" y1="70" x2="120" y2="150" stroke="#61dafb" strokeWidth="5" />
+    <line x1="120" y1="70" x2="120" y2="150" stroke="#00ff9f" strokeWidth="5" />
 
     {/* slant-top-first */}
 
-    <line x1="80" y1="50" x2="100" y2="50" stroke="#000000" strokeWidth="2" />
+    <line x1="80" y1="50" x2="100" y2="50" stroke="#61dafb" strokeWidth="2" />
     {/* slant-top-second */}
 
-    <line x1="120" y1="70" x2="100" y2="50" stroke="#000000" strokeWidth="3" />
+    <line x1="120" y1="70" x2="100" y2="50" stroke="#61dafb" strokeWidth="3" />
 
     {/* slant-bottom-first */}
 
@@ -52,7 +52,7 @@ export default function PlainLogo() {
       y1="130"
       x2="100"
       y2="150"
-      stroke="#41dabc"
+      stroke="#61dafb"
       strokeWidth="3"
     />
 
@@ -63,7 +63,7 @@ export default function PlainLogo() {
       y1="150"
       x2="100"
       y2="150"
-      stroke="#61dafb"
+      stroke="#00ff9f"
       strokeWidth="5"
     />
   </svg>
