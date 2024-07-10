@@ -5,22 +5,39 @@ export default function StarGrid() {
   const starOpacity = 0.2; // Opacity for stars
 
   const buildings = [
-    { x: 40, y: 375, width: 30, height: 50, fill: "#070815" }, // Building 1
-    { x: 90, y: 360, width: 40, height: 65, fill: "#070825" }, // Building 2
-    { x: 150, y: 380, width: 25, height: 45, fill: "#1a1a1a" }, // Building 3
-    { x: 200, y: 350, width: 50, height: 75, fill: "#070815" }, // Building 4
-    { x: 270, y: 370, width: 20, height: 55, fill: "#070825" }, // Building 5
-    { x: 310, y: 355, width: 40, height: 70, fill: "#070845" }, // Building 6
-    { x: 370, y: 385, width: 30, height: 40, fill: "#070815" }, // Building 7
-    { x: 420, y: 365, width: 45, height: 60, fill: "#070825" }, // Building 8
-    { x: 480, y: 370, width: 35, height: 55, fill: "#1a1a1a" }, // Building 9
-    { x: 530, y: 345, width: 60, height: 80, fill: "#070815" }, // Building 10
-    { x: 600, y: 365, width: 25, height: 60, fill: "#070825" }, // Building 11
-    { x: 650, y: 355, width: 40, height: 70, fill: "#070845" }, // Building 12
-    { x: 710, y: 375, width: 30, height: 50, fill: "#070815" }, // Building 13
-    { x: 760, y: 360, width: 45, height: 65, fill: "#070825" }, // Building 14
-    { x: 820, y: 380, width: 25, height: 45, fill: "#1a1a1a" }, // Building 15
-    { x: 870, y: 350, width: 50, height: 75, fill: "#070815" }, // Building 16
+    { x: 0, y: 395, width: 38, height: 30, fill: "#070825" }, // Building 
+    { x: 40, y: 375, width: 30, height: 50, fill: "#070815" }, // Building 
+    { x: 60, y: 360, width: 40, height: 65, fill: "#1a1a1a" }, // Building 
+    { x: 90, y: 380, width: 25, height: 45, fill: "#070815" }, // Building 
+    { x: 120, y: 385, width: 35, height: 55, fill: "#2a2a2a" }, // Building (dark grey)
+    { x: 150, y: 380, width: 30, height: 50, fill: "#0a0a35" }, // Building (dark blue)
+    { x: 190, y: 360, width: 40, height: 65, fill: "#070825" }, // Building 
+    { x: 200, y: 350, width: 50, height: 75, fill: "#070815" }, // Building 
+    { x: 230, y: 355, width: 40, height: 70, fill: "#070825" }, // Building 
+    { x: 270, y: 370, width: 20, height: 55, fill: "#2a2a2a" }, // Building 
+    { x: 310, y: 355, width: 40, height: 70, fill: "#070845" }, // Building 
+    { x: 350, y: 380, width: 25, height: 45, fill: "#1a1a1a" }, // Building 
+    { x: 370, y: 385, width: 30, height: 40, fill: "#070815" }, // Building 
+    { x: 420, y: 365, width: 45, height: 60, fill: "#070825" }, // Building 
+    { x: 450, y: 380, width: 25, height: 45, fill: "#070845" }, // Building 
+    { x: 480, y: 390, width: 35, height: 35, fill: "#070825" }, // Building 
+    { x: 490, y: 350, width: 20, height: 75, fill: "#1a1a1a" }, // Building 
+    { x: 500, y: 360, width: 40, height: 65, fill: "#070825" }, // Building 
+    { x: 530, y: 345, width: 60, height: 80, fill: "#070815" }, // Building
+    { x: 550, y: 380, width: 15, height: 45, fill: "#2a2a2a" }, // Building 
+    { x: 570, y: 375, width: 25, height: 50, fill: "#070825" }, // Building 
+    { x: 590, y: 360, width: 40, height: 65, fill: "#1a1a1a" }, // Building 
+    { x: 600, y: 365, width: 25, height: 60, fill: "#070825" }, // Building 
+    { x: 650, y: 355, width: 40, height: 70, fill: "#070845" }, // Building 
+    { x: 710, y: 375, width: 30, height: 50, fill: "#070815" }, // Building 
+    { x: 760, y: 360, width: 45, height: 65, fill: "#070825" }, // Building
+    { x: 820, y: 410, width: 25, height: 15, fill: "#1a1a1a" }, // Building 
+    { x: 850, y: 380, width: 30, height: 45, fill: "#0a0a35" }, // Building 
+    { x: 870, y: 390, width: 15, height: 35, fill: "#2a2a2a" }, // Building
+    { x: 890, y: 360, width: 40, height: 65, fill: "#070815" }, // Building 
+    { x: 920, y: 380, width: 25, height: 45, fill: "#1a1a1a" }, // Building 
+    
+
   ];
 
   return (
@@ -76,8 +93,8 @@ export default function StarGrid() {
               key={`${bIndex}-${lIndex}`}
               x={building.x + Math.random() * (building.width - 5)} // Random x position within the building width
               y={building.y + Math.random() * (building.height - 10)} // Random y position within the building height
-              width="2"
-              height="3"
+              width=".5"
+              height=".5"
               fill="#ffff00" // Darker grey color for lights
             />
           ))
