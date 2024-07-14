@@ -5,6 +5,7 @@ import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import clsx from "clsx";
 import { PiPuzzlePiece, PiPlanet } from "react-icons/pi";
+import AnimatedContent from "./AnimatedContent";
 
 const icons = {
   puzzle: <PiPuzzlePiece />,
@@ -27,18 +28,19 @@ const Showcase = ({ slice }: ShowcaseProps): JSX.Element => {
       className="relative"
     >
       <div className="glow absolute -z-10 aspect-square w-full max-w-xl rounded-full bg-teal-500/20 blur-3xl filter" />
-
-      <PrismicRichText
-        field={slice.primary.heading}
-        components={{
-          heading2: ({ children }) => (
-            <h2 className="text-balance text-center text-5xl font-medium md:text-7xl">
-              {children}
-            </h2>
-          ),
-        }}
-      />
-      <div className="mt-16 grid items-center rounded-xl border border-blue-50/20 bg-gradient-to-b from-slate-50/15 to-slate-50/5 px-8 py-8 backdrop-blur-sm lg:grid-cols-3 lg:py-12">
+      <AnimatedContent>
+        <PrismicRichText
+          field={slice.primary.heading}
+          components={{
+            heading2: ({ children }) => (
+              <h2 className="text-balance text-center text-5xl font-medium md:text-7xl">
+                {children}
+              </h2>
+            ),
+          }}
+        />
+      </AnimatedContent>
+      <div className="mt-16 grid items-center rounded-xl border border-blue-50/20 bg-gradient-to-b from-slate-50/15 to-slate-50/5 px-8 py-8 backdrop-blur-sm lg:grid-cols-3 lg:gap-0 lg:py-12">
         <div>
           <div className="w-fit rounded-lg bg-purple-400/20 p-4 text-3xl">
             <>{slice.primary.icon && icons[slice.primary.icon]}</>
@@ -50,7 +52,7 @@ const Showcase = ({ slice }: ShowcaseProps): JSX.Element => {
           <div className="prose prose-invert mt-4 max-w-xl">
             <PrismicRichText field={slice.primary.body} />
           </div>
-          <ButtonLink field={slice.primary.button_link} className="mt-6 mb-4">
+          <ButtonLink field={slice.primary.button_link} className="mb-4 mt-6">
             {slice.primary.button_text || "Learn More"}
           </ButtonLink>
         </div>
