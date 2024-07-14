@@ -57,6 +57,47 @@ export default function StarGrid() {
         ],
       });
 
+      // Loop animation
+      tl.to(".star-grid-item", {
+        delay: 8,
+        repeat: -1,
+        repeatDelay: 8,
+        keyframes: [
+          {
+            opacity: .5,
+            duration: 1,
+          },
+          {
+            opacity: 0.4,
+            rotate: "+=180",
+            color: "#ffd057",
+            scale: 0.5,
+            duration: 0.3,
+            stagger: {
+              amount: 2,
+              grid: grid,
+              from: "random",
+            },
+          },
+          {
+            opacity: 0,
+            rotate: "+=180",
+            color: "#fff",
+            scale: 2,
+            delay: -2,
+            duration: 0.2,
+            stagger: {
+              amount: 5,
+              grid: grid,
+              from: "random",
+            },
+          },
+        ],
+      });
+
+
+      
+
       // Set initial state for building lights
       gsap.set(".building-light", {
         opacity: 1,
