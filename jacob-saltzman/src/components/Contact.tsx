@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { MdMenu, MdClose } from "react-icons/md";
 import clsx from "clsx";
+import ContactForm from "./ContactForm";
 
 export default function Contact() {
   const [open, setOpen] = useState(false);
@@ -34,6 +35,7 @@ export default function Contact() {
           <MdClose />
           <span className="sr-only">Close menu</span>
         </button>
+        <ContactForm />
       </div>
 
      
