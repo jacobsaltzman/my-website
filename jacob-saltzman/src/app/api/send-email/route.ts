@@ -1,21 +1,22 @@
+// pages/api/send-email.ts
+
+import { NextApiRequest, NextApiResponse } from 'next';
 import nodemailer from 'nodemailer';
 
-export default async function handler(req: { method: string; body: { name: any; email: any; message: any; }; }, res: { status: (arg0: number) => { (): any; new(): any; json: { (arg0: { message: string; error?: unknown; }): void; new(): any; }; }; }) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     const { name, email, message } = req.body;
 
-    // Create a Nodemailer transporter using SMTP
     let transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com', // For Gmail
-      port: 587, // For TLS
-      secure: false, // Use TLS
+      host: 'smtp.gmail.com',
+      port: 465,
+      secure: false, // Use TLS/SSL
       auth: {
-        user: process.env.SMTP_USER, // Your Gmail address
-        pass: process.env.SMTP_PASS, // Your app password
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
       },
     });
 
-    // Define the email options
     let mailOptions = {
       from: process.env.SMTP_USER, // Sender address
       to: process.env.EMAIL_RECEIVER, // Receiver's email address
@@ -24,7 +25,7 @@ export default async function handler(req: { method: string; body: { name: any; 
     };
 
     console.log(mailOptions);
-    // Send the email
+
     try {
       await transporter.sendMail(mailOptions);
       res.status(200).json({ message: 'Email sent successfully' });
@@ -36,4 +37,3 @@ export default async function handler(req: { method: string; body: { name: any; 
     res.status(405).json({ message: 'Method not allowed' });
   }
 }
-
