@@ -3,6 +3,7 @@ import { useState } from "react";
 import { MdMenu, MdClose } from "react-icons/md";
 import clsx from "clsx";
 import ContactForm from "./ContactForm";
+import GeoButton from "./GeoButton";
 
 export default function Contact() {
   const [open, setOpen] = useState(false);
@@ -36,6 +37,7 @@ export default function Contact() {
           <span className="sr-only">Close menu</span>
         </button>
         <ContactForm />
+        <GeoButton></GeoButton>
       </div>
 
      
