@@ -1,43 +1,39 @@
-// pages/api/send-email.ts
-
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-
+export async function POST(req: NextRequest) {
   console.log("sent to API.");
 
-  if (req.method === 'POST') {
-    const { name, email, message } = req.body;
+  const { name, email, message } = await req.json();
 
-    let transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
-      port: 465,
-      secure: false, // Use TLS/SSL
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-    });
+  let transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true, 
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS,
+    },
+  });
 
-    let mailOptions = {
-      from: process.env.SMTP_USER, // Sender address
-      to: process.env.EMAIL_RECEIVER, // Receiver's email address
-      subject: 'Contact Form Message',
-      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
-    };
+  let mailOptions = {
+    from: process.env.SMTP_USER, // Sender address
+    to: process.env.EMAIL_RECEIVER, // Receiver's email address
+    subject: 'Contact Form Message',
+    text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+  };
 
-    console.log(mailOptions);
+  console.log(mailOptions);
 
-    try {
-      await transporter.sendMail(mailOptions);
-      res.status(200).json({ message: 'Email sent successfully' });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Failed to send email', error });
-    }
-  } else {
-    console.log("nope");
-    res.status(405).json({ message: 'Method not allowed' });
+  try {
+    await transporter.sendMail(mailOptions);
+    return NextResponse.json({ message: 'Email sent successfully' }, { status: 200 });
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json({ message: 'Failed to send email', error }, { status: 500 });
   }
+}
+
+export async function GET(req: NextRequest) {
+  return NextResponse.json({ message: 'GET method not allowed' }, { status: 405 });
 }
