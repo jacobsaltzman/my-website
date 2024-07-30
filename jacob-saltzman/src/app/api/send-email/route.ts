@@ -4,6 +4,9 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import nodemailer from 'nodemailer';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+
+  console.log("sent to API.");
+
   if (req.method === 'POST') {
     const { name, email, message } = req.body;
 
@@ -34,6 +37,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       res.status(500).json({ message: 'Failed to send email', error });
     }
   } else {
+    console.log("nope");
     res.status(405).json({ message: 'Method not allowed' });
   }
 }
