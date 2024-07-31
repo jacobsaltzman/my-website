@@ -1,35 +1,41 @@
-import { useState } from 'react';
+import { useState } from "react";
+import Bounded from "./Bounded";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
 
-  const handleChange = (e: { target: { name: any; value: any; }; }) => {
+  const handleChange = (e: { target: { name: any; value: any } }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    const response = await fetch('/api/send-email', {
-      method: 'POST',
+    const response = await fetch("/api/send-email", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
     });
 
     if (response.ok) {
-      alert('Message sent successfully');
+      alert("Message sent successfully");
     } else {
-      alert('Failed to send message');
+      alert("Failed to send message");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="flex flex-col gap-6 text-black p-8">
+      
+
+        <h3 className="border-b-2 font-bold text-white">CONTACT ME</h3>
+      
+      
       <input
         type="text"
         name="name"
@@ -53,7 +59,11 @@ export default function ContactForm() {
         placeholder="Your Message"
         required
       />
-      <button type="submit">Send</button>
+      <div>
+        <button type="submit" className="max-w-14 px-1 border-2 text-white">
+          SEND
+        </button>
+      </div>
     </form>
   );
 }
