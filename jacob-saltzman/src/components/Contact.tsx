@@ -16,7 +16,7 @@ export default function Contact() {
         aria-expanded={open}
         onClick={() => setOpen(true)}
       >
-        CONTACT ME
+        GET IN TOUCH
         <span className="sr-only"> Open Menu</span>
       </button>
 

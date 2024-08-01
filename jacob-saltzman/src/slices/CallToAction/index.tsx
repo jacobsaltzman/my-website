@@ -3,7 +3,7 @@ import { Content } from "@prismicio/client";
 import { PrismicText, SliceComponentProps } from "@prismicio/react";
 import PlainLogo from "./PlainLogo";
 import ButtonLink from "@/components/ButtonLink";
-import Contact from "@/components/Contact";
+
 
 /**
  * Props for `CallToAction`.
@@ -33,8 +33,6 @@ const CallToAction = ({ slice }: CallToActionProps): JSX.Element => {
       <ButtonLink field={slice.primary.button_link} className="mt-6">
         {slice.primary.button_text || "Learn More"}
       </ButtonLink>
-
-      <Contact />
     </Bounded>
   );
 };
