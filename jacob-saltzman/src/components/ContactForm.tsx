@@ -60,7 +60,7 @@ export default function ContactForm() {
         required
       />
       <div>
-        <button type="submit" className="max-w-14 px-1 border-2 text-white">
+        <button type="submit" className="max-w-14 px-1 border-2 text-white hover:border-slate-800 hover:text-slate-800">
           SEND
         </button>
       </div>
