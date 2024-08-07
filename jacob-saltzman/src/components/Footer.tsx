@@ -18,10 +18,9 @@ export default async function Footer() {
           <span className="sr-only">saltzman.dev logo link to homepage</span>
         </Link>
 
-        <Contact />
         
-        <nav aria-label="Footer">
-          <ul className="flex gap-6">
+       
+          <ul className="flex gap-10">
             {settings.data.navigation.map((item) => (
               <li key={item.label}>
                 <PrismicNextLink className="inline-flex min-h-11 items-center" field={item.link}>
@@ -30,7 +29,8 @@ export default async function Footer() {
               </li>
             ))}
           </ul>
-        </nav>
+            <Contact />
+        
       </div>
     </footer>
   );

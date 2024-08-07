@@ -12,7 +12,7 @@ export default function Contact() {
     <div className="px-4 py-4 md:px-6 md:py-6 overflow-hidden" aria-label="Main">
       <button
         type="button"
-        className="block p-2 text-3xl text-white"
+        className="block p-2 text-lg text-white border-2 hover:border-slate-800 hover:text-slate-800"
         aria-expanded={open}
         onClick={() => setOpen(true)}
       >
